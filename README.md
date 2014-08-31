@@ -19,3 +19,5 @@ At this time, the [RULES] section is the only section that is not converted.
 
 Download exe and setup files:
 http://www.optiwater.com/optiunits/
+
+by Elad Salomons
