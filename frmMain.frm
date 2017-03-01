@@ -3,14 +3,14 @@ Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmMain 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "optiUnits by Elad Salomons"
-   ClientHeight    =   5010
-   ClientLeft      =   45
-   ClientTop       =   435
+   ClientHeight    =   5016
+   ClientLeft      =   48
+   ClientTop       =   432
    ClientWidth     =   10080
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   5010
+   ScaleHeight     =   5016
    ScaleWidth      =   10080
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
@@ -42,7 +42,7 @@ Begin VB.Form frmMain
       Caption         =   "File"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   177
          Weight          =   700
          Underline       =   0   'False
@@ -175,7 +175,7 @@ Begin VB.Form frmMain
       Caption         =   "More products at: www.optiwater.com"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   177
          Weight          =   700
          Underline       =   -1  'True
@@ -314,7 +314,7 @@ Dim multiFlow As Single
 Dim multiVolume As Single
 Dim multiHeadloss As Single
 Dim multiPower As Single
-
+Dim multiPressure As Single
 Sub DoConversion()
 '---------------------------------------------------------------------------
 Dim Fin As Long, Fout As Long
@@ -402,7 +402,7 @@ Do
                     Print #Fout, W(1), W(2), W(3), CSng(W(4)) * multiDiameter, W(5);
                     Select Case UCase(W(5))
                         Case "PRV", "PSV", "PBV"
-                            Print #Fout, CSng(W(6)) * multiDistance, W(7);
+                            Print #Fout, CSng(W(6)) * multiPressure, W(7);
                         Case "FCV"
                             Print #Fout, CSng(W(6)) * multiFlow, W(7);
                         Case "TCV", "GPV"
@@ -592,6 +592,7 @@ If (InpUnits = "CFS" Or InpUnits = "GPM" Or InpUnits = "MGD" Or InpUnits = "IMGD
             multiHeadloss = 1
         End If
         multiPower = 0.7456999
+        multiPressure = 0.703249614902
 End If
 If (ToUnits = "CFS" Or ToUnits = "GPM" Or ToUnits = "MGD" Or ToUnits = "IMGD" Or ToUnits = "AFD") And _
     (InpUnits = "LPS" Or InpUnits = "LPM" Or InpUnits = "MLD" Or InpUnits = "CMH" Or InpUnits = "CMD") Then
@@ -604,6 +605,7 @@ If (ToUnits = "CFS" Or ToUnits = "GPM" Or ToUnits = "MGD" Or ToUnits = "IMGD" Or
             multiHeadloss = 1
         End If
         multiPower = 1.341022
+        multiPressure = 1 / 0.703249614902
 End If
 
 Select Case ConversionString

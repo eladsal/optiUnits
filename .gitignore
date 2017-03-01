@@ -1,5 +1,8 @@
 optiUnits.vbw
 
+# exe file
+*.exe
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
