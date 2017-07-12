@@ -390,7 +390,7 @@ Do
                     k = 4
                     For i = k To N Step 2
                         Select Case UCase(W(k))
-                            Case "HEAD", "SPEED"
+                            Case "HEAD", "SPEED", "PATTERN"
                                 Print #Fout, " " & W(k), W(k + 1);
                             Case "POWER"
                                 Print #Fout, " " & W(k), W(k + 1) * multiPower;
